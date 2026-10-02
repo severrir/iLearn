@@ -1,0 +1,8 @@
+node_modules/
+dist/
+.DS_Store
+*.local
+.vite/
+
+# Impeccable: machine-local workflow overrides only
+.impeccable/config.local.json

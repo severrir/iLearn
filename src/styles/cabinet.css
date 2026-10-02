@@ -1,0 +1,951 @@
+/* ============================================================
+   CABINET — the component language.
+   Everything here is a physical part: a lit sign, a moulded
+   button with a bevel that actually compresses, a silkscreened
+   plate, a segmented readout, a monitor behind glass.
+   ============================================================ */
+
+/* ---------- Marquee (the lit sign across the top) ---------- */
+
+.marquee {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: linear-gradient(180deg, var(--panel-hi), var(--panel));
+  border-bottom: 1px solid var(--border);
+  box-shadow: var(--sh-2);
+}
+.marquee::after {
+  /* the tube behind the sign */
+  content: '';
+  position: absolute;
+  inset-inline: 0;
+  bottom: -1px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--purple), var(--mint), transparent);
+  opacity: 0.75;
+}
+.marquee__in {
+  display: flex;
+  align-items: center;
+  gap: var(--s2);
+  min-height: 64px;
+  padding-block: 10px;
+}
+.marquee__brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 1.3rem;
+  letter-spacing: -0.02em;
+  color: var(--text);
+  text-decoration: none;
+  flex: none;
+}
+/* The auto margin belongs on the flex CHILD of .marquee__in. The <ul> is a
+   grandchild, so putting it there did nothing and the cluster packed left. */
+.marquee__navwrap {
+  margin-inline-start: auto;
+}
+.marquee__nav {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  list-style: none;
+}
+.marquee__link {
+  display: block;
+  padding: 9px 13px;
+  border-radius: var(--r-sm);
+  color: var(--text-dim);
+  text-decoration: none;
+  font-weight: 700;
+  font-size: var(--t-small);
+  transition: color var(--d-press) var(--e-press), background var(--d-press) var(--e-press);
+}
+.marquee__link:hover {
+  color: var(--text);
+  background: var(--purple-wash);
+}
+.marquee__link[aria-current='page'] {
+  color: var(--text);
+  background: var(--purple-wash);
+  box-shadow: inset 0 -2px 0 var(--purple);
+}
+.marquee__tools {
+  display: flex;
+  align-items: center;
+  gap: var(--s1);
+  flex: none;
+}
+.marquee__burger {
+  display: none;
+}
+
+/* The header carries brand, lamp, language, theme, sound, Join and the menu,
+   which does not fit a 390px phone. FREE PLAY is the thesis and the language
+   switch has to stay reachable, so those two never drop. Join and the two
+   preference toggles move into the menu instead, where they still work. */
+@media (max-width: 680px) {
+  .marquee__tools > .btn,
+  .marquee__tools > .ctrl:not(.marquee__burger) {
+    display: none;
+  }
+  .marquee__brand {
+    font-size: 1.1rem;
+  }
+  .marquee__in {
+    gap: var(--s1);
+  }
+  .lang button {
+    padding: 0 9px;
+  }
+  .lamp {
+    padding: 4px 9px 4px 7px;
+    font-size: 0.625rem;
+    letter-spacing: var(--track-label);
+  }
+}
+
+@media (max-width: 430px) {
+  /* Last thing to go: the wordmark's text, not the mascot or the lamp. */
+  .marquee__brand span {
+    display: none;
+  }
+}
+
+@media (max-width: 960px) {
+  .marquee__nav {
+    display: none;
+  }
+  .marquee__burger {
+    display: inline-flex;
+  }
+  .marquee__nav--open {
+    display: flex;
+    position: absolute;
+    inset-inline: 0;
+    top: 100%;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 2px;
+    margin: 0;
+    padding: var(--s1);
+    background: var(--panel);
+    border-bottom: 1px solid var(--border);
+    box-shadow: var(--sh-3);
+  }
+  .marquee__nav--open .marquee__link {
+    padding: 13px;
+    font-size: var(--t-body);
+  }
+}
+
+/* Join and the preference toggles, shown only inside the open mobile menu. */
+.marquee__menurow {
+  display: none;
+}
+@media (max-width: 680px) {
+  .marquee__nav--open .marquee__menurow {
+    display: flex;
+    gap: var(--s1);
+    margin-top: var(--s1);
+    padding-top: var(--s1);
+    border-top: 1px solid var(--border-soft);
+  }
+  .marquee__nav--open .marquee__menurow .btn {
+    flex: 1;
+  }
+}
+
+/* The FREE PLAY lamp. Lit, because the machine is on. */
+.lamp {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 5px 11px 5px 9px;
+  border-radius: 999px;
+  background: var(--mint-wash);
+  border: 1px solid var(--mint-edge);
+  font-family: var(--font-code);
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: var(--track-label);
+  color: var(--mint-ink);
+  white-space: nowrap;
+}
+:root[data-theme='light'] .lamp {
+  color: var(--mint-ink);
+}
+.lamp__bulb {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--mint-ink);
+  box-shadow: 0 0 7px var(--mint-ink);
+  animation: lamp-pulse 2.6s ease-in-out infinite;
+}
+@keyframes lamp-pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.42;
+  }
+}
+
+/* ---------- Silkscreen plate ---------- */
+/* Struck into the cabinet, not printed on top of it. */
+
+.plate {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  padding: 11px 18px;
+  border-radius: var(--r-sm);
+  background: linear-gradient(180deg, var(--panel-lo), var(--panel));
+  border: 1px solid var(--border);
+  border-top-color: var(--panel-lo);
+  box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.45), 0 1px 0 var(--panel-hi);
+  font-family: var(--font-code);
+  font-size: var(--t-micro);
+  font-weight: 700;
+  letter-spacing: var(--track-label);
+  color: var(--text-dim);
+}
+.plate__sep {
+  color: var(--link);
+  opacity: 0.7;
+}
+.plate strong {
+  color: var(--mint-ink);
+  font-weight: 700;
+}
+
+/* ---------- Bezel + screen ---------- */
+
+.bezel {
+  position: relative;
+  border-radius: 26px;
+  padding: clamp(10px, 1.6vw, 18px);
+  background: linear-gradient(165deg, var(--panel-hi), var(--panel) 45%, var(--panel-lo));
+  border: 1px solid var(--border);
+  box-shadow: var(--sh-3), inset 0 1px 0 rgba(255, 255, 255, 0.07);
+}
+
+.screen {
+  position: relative;
+  border-radius: 16px;
+  background: var(--screen);
+  border: 1px solid var(--screen-border);
+  box-shadow: inset 0 3px 22px rgba(0, 0, 0, 0.85);
+  color: var(--screen-text);
+  overflow: hidden;
+}
+.screen::after {
+  /* monitor line structure — texture only, far below any contrast threshold */
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.028) 0 1px,
+    transparent 1px 3px
+  );
+}
+.screen__bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 14px;
+  background: var(--screen-panel);
+  border-bottom: 1px solid var(--screen-border);
+  font-family: var(--font-code);
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: var(--track-label);
+  color: var(--screen-dim);
+}
+.screen__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--screen-yellow);
+  box-shadow: 0 0 6px var(--screen-yellow);
+  flex: none;
+}
+.screen__body {
+  padding: 16px;
+  font-family: var(--font-code);
+  font-size: var(--t-code);
+  line-height: 1.65;
+}
+
+/* ---------- Cabinet keys (the six track buttons) ---------- */
+/* A moulded cap sitting on a bevel. Pressing it compresses the
+   bevel by 3px — the cap genuinely travels down. */
+
+.keyrow {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: clamp(8px, 1.1vw, 14px);
+}
+@media (max-width: 860px) {
+  .keyrow {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media (max-width: 440px) {
+  .keyrow {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.key {
+  --key-cap: var(--purple);
+  --key-shade: color-mix(in srgb, var(--key-cap) 55%, #000);
+  --key-ink: #fff;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  min-height: 112px;
+  padding: 14px 8px;
+  border: 0;
+  border-radius: var(--r-key);
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--key-cap) 88%, #fff) 0%,
+    var(--key-cap) 42%,
+    color-mix(in srgb, var(--key-cap) 84%, #000) 100%
+  );
+  color: var(--key-ink);
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 1rem;
+  line-height: 1.1;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  box-shadow: 0 5px 0 var(--key-shade), 0 9px 16px rgba(4, 6, 18, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.5);
+  transform: translateY(0);
+  transition: transform var(--d-press) var(--e-press), box-shadow var(--d-press) var(--e-press),
+    filter var(--d-press) var(--e-press);
+}
+.key:hover {
+  filter: brightness(1.08);
+  transform: translateY(-2px);
+  box-shadow: 0 7px 0 var(--key-shade), 0 13px 22px rgba(4, 6, 18, 0.55),
+    inset 0 1px 0 rgba(255, 255, 255, 0.5);
+}
+.key:active {
+  transform: translateY(4px);
+  box-shadow: 0 1px 0 var(--key-shade), 0 2px 5px rgba(4, 6, 18, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.35);
+}
+.key__glyph {
+  font-family: var(--font-code);
+  font-size: 1.45rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  opacity: 0.95;
+}
+.key__sub {
+  font-family: var(--font-code);
+  font-size: 0.625rem;
+  font-weight: 700;
+  letter-spacing: var(--track-label);
+  opacity: 0.82;
+}
+.key--done::after {
+  content: '';
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.95);
+}
+
+/* ---------- Pill buttons ---------- */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  min-height: var(--btn-h);
+  padding: 0 26px;
+  border: 2px solid transparent;
+  border-radius: var(--r-btn);
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 1.0625rem;
+  text-decoration: none;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: transform var(--d-press) var(--e-press), box-shadow var(--d-press) var(--e-press),
+    background var(--d-press) var(--e-press), color var(--d-press) var(--e-press);
+}
+:lang(ka) .btn {
+  font-family: 'Noto Sans Georgian', var(--font-body);
+  font-weight: 800;
+  font-size: 1rem;
+}
+.btn:hover {
+  transform: scale(1.05);
+}
+.btn:active {
+  transform: scale(0.98);
+}
+
+.btn--primary {
+  background: var(--purple-fill);
+  color: var(--on-purple);
+  box-shadow: 0 4px 0 color-mix(in srgb, var(--purple-fill) 55%, #000), 0 8px 18px rgba(4, 6, 18, 0.45);
+}
+.btn--primary:hover {
+  box-shadow: 0 4px 0 color-mix(in srgb, var(--purple-fill) 55%, #000), 0 10px 26px var(--purple-edge);
+}
+.btn--primary:active {
+  box-shadow: 0 1px 0 color-mix(in srgb, var(--purple-fill) 55%, #000), 0 2px 7px rgba(4, 6, 18, 0.45);
+}
+
+/* Secondary: outline that fills on hover, per the brief */
+.btn--ghost {
+  background: transparent;
+  border-color: var(--border);
+  color: var(--text);
+}
+.btn--ghost:hover {
+  background: var(--text);
+  border-color: var(--text);
+  color: var(--bg);
+}
+
+.btn--mint {
+  background: var(--mint-ink);
+  color: var(--on-mint);
+  box-shadow: 0 4px 0 color-mix(in srgb, var(--mint-ink) 55%, #000), 0 8px 18px rgba(4, 6, 18, 0.4);
+}
+.btn--mint:hover {
+  box-shadow: 0 4px 0 color-mix(in srgb, var(--mint-ink) 55%, #000), 0 10px 26px var(--mint-edge);
+}
+.btn--mint:active {
+  box-shadow: 0 1px 0 color-mix(in srgb, var(--mint-ink) 55%, #000), 0 2px 7px rgba(4, 6, 18, 0.4);
+}
+
+.btn--sm {
+  min-height: 42px;
+  padding: 0 18px;
+  font-size: var(--t-small);
+}
+.btn[disabled] {
+  opacity: 0.45;
+  cursor: not-allowed;
+  transform: none !important;
+  box-shadow: none;
+}
+.btn--block {
+  width: 100%;
+}
+
+/* Icon-only control (theme, sound, language, menu) */
+.ctrl {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  min-width: 42px;
+  height: 42px;
+  padding: 0 11px;
+  border: 1px solid var(--border);
+  border-radius: var(--r-sm);
+  background: var(--card);
+  color: var(--text-dim);
+  font-family: var(--font-code);
+  font-size: var(--t-micro);
+  font-weight: 700;
+  letter-spacing: var(--track-label);
+  cursor: pointer;
+  transition: color var(--d-press) var(--e-press), border-color var(--d-press) var(--e-press),
+    background var(--d-press) var(--e-press);
+}
+.ctrl:hover {
+  color: var(--text);
+  border-color: var(--purple-edge);
+  background: var(--purple-wash);
+}
+.ctrl[aria-pressed='true'] {
+  color: var(--mint-ink);
+  border-color: var(--mint-edge);
+  background: var(--mint-wash);
+}
+
+/* Language switch: two welded halves */
+.lang {
+  display: inline-flex;
+  border: 1px solid var(--border);
+  border-radius: var(--r-sm);
+  overflow: hidden;
+  background: var(--card);
+}
+.lang button {
+  border: 0;
+  background: transparent;
+  color: var(--text-faint);
+  font-family: var(--font-code);
+  font-size: var(--t-micro);
+  font-weight: 700;
+  letter-spacing: var(--track-label);
+  padding: 0 11px;
+  height: 40px;
+  cursor: pointer;
+  transition: color var(--d-press) var(--e-press), background var(--d-press) var(--e-press);
+}
+.lang button:hover {
+  color: var(--text);
+}
+.lang button[aria-pressed='true'] {
+  background: var(--purple-fill);
+  color: var(--on-purple);
+}
+
+/* ---------- Segmented LED readout ---------- */
+
+.led {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 2px;
+  padding: 7px 12px;
+  border-radius: 8px;
+  background: var(--screen-well);
+  border: 1px solid var(--screen-border);
+  box-shadow: inset 0 2px 9px rgba(0, 0, 0, 0.9);
+  font-family: var(--font-code);
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.04em;
+  color: var(--screen-mint);
+  text-shadow: 0 0 9px currentColor;
+  line-height: 1;
+}
+.led--lg {
+  font-size: clamp(1.4rem, 1rem + 1.8vw, 2.1rem);
+  padding: 11px 15px;
+}
+.led--wine {
+  color: var(--live);
+}
+.led--yellow {
+  color: var(--screen-yellow);
+}
+.led__unit {
+  font-size: 0.5em;
+  opacity: 0.65;
+  letter-spacing: var(--track-label);
+  margin-inline-start: 2px;
+}
+
+/* ---------- Cards and panels ---------- */
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--r-card);
+  padding: var(--s3);
+  box-shadow: var(--sh-1);
+  transition: transform var(--d-lift) var(--e-out), box-shadow var(--d-lift) var(--e-out),
+    border-color var(--d-lift) var(--e-out);
+}
+.card--hover:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--sh-lift);
+  border-color: var(--purple-edge);
+}
+
+.panel {
+  background: linear-gradient(180deg, var(--panel), var(--panel-lo));
+  border: 1px solid var(--border);
+  border-radius: var(--r-card);
+  box-shadow: var(--sh-2), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+/* Section heading, silkscreened onto the panel */
+.silk {
+  font-family: var(--font-code);
+  font-size: var(--t-micro);
+  font-weight: 700;
+  letter-spacing: var(--track-label);
+  color: var(--text-faint);
+}
+
+/* Strict spec strip — every track and lesson card carries one */
+.spec {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  font-family: var(--font-code);
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: var(--track-label);
+  color: var(--text-faint);
+  font-variant-numeric: tabular-nums;
+}
+.spec span {
+  display: inline-flex;
+  gap: 5px;
+}
+.spec b {
+  color: var(--text-dim);
+  font-weight: 700;
+}
+
+/* ---------- The 8-step level row: scales, never wraps ---------- */
+
+.levelrow {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  gap: clamp(4px, 0.8vw, 10px);
+  align-items: stretch;
+}
+.step {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 7px;
+  padding: 10px 2px 12px;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
+  border-radius: 12px;
+  transition: transform var(--d-press) var(--e-press);
+}
+.step:hover {
+  transform: translateY(-3px);
+}
+.step__key {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  min-height: 34px;
+  border-radius: 9px;
+  background: linear-gradient(180deg, var(--panel-hi), var(--panel));
+  border: 1px solid var(--border);
+  box-shadow: 0 3px 0 var(--panel-lo), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  display: grid;
+  place-items: center;
+  font-family: var(--font-code);
+  font-size: clamp(0.7rem, 0.5rem + 0.9vw, 1rem);
+  font-weight: 700;
+  color: var(--text-faint);
+  transition: background var(--d-lift) var(--e-out), color var(--d-lift) var(--e-out),
+    box-shadow var(--d-lift) var(--e-out);
+}
+.step--done .step__key {
+  background: linear-gradient(180deg, color-mix(in srgb, var(--mint-ink) var(--cap-lift), #fff), var(--mint-ink));
+  color: var(--on-mint);
+  border-color: transparent;
+  box-shadow: 0 3px 0 color-mix(in srgb, var(--mint-ink) 55%, #000), 0 0 16px var(--mint-edge);
+}
+.step--now .step__key {
+  background: linear-gradient(180deg, color-mix(in srgb, var(--yellow-ink) var(--cap-lift), #fff), var(--yellow-ink));
+  color: var(--on-yellow);
+  border-color: transparent;
+  box-shadow: 0 3px 0 color-mix(in srgb, var(--yellow-ink) 55%, #000), 0 0 20px var(--yellow-edge);
+}
+.step__n {
+  font-family: var(--font-code);
+  font-size: 0.625rem;
+  font-weight: 700;
+  letter-spacing: var(--track-label);
+  color: var(--text-faint);
+}
+.step--now .step__n {
+  color: var(--yellow-ink);
+}
+.step--done .step__n {
+  color: var(--mint-ink);
+}
+/* the lit indicator that always says where you are */
+.step--now::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60%;
+  height: 3px;
+  border-radius: 2px;
+  background: var(--yellow);
+  box-shadow: 0 0 10px var(--yellow);
+}
+.levelrow__labels {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  gap: clamp(4px, 0.8vw, 10px);
+  margin-top: 6px;
+}
+.levelrow__label {
+  font-family: var(--font-code);
+  font-size: 0.625rem;
+  letter-spacing: 0.04em;
+  color: var(--text-faint);
+  text-align: center;
+  line-height: 1.25;
+  hyphens: auto;
+}
+@media (max-width: 620px) {
+  .levelrow__labels {
+    display: none;
+  }
+}
+
+/* ---------- XP bar ---------- */
+
+.xp {
+  height: 12px;
+  border-radius: 999px;
+  background: var(--panel-lo);
+  border: 1px solid var(--border);
+  overflow: hidden;
+  box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.5);
+}
+/* The fill is always full width and is revealed with clip-path, so the
+   gradient stays true instead of squashing, and nothing triggers layout. */
+.xp__fill {
+  height: 100%;
+  width: 100%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--purple), var(--mint));
+  box-shadow: 0 0 12px var(--mint-edge);
+  transition: clip-path 0.7s var(--e-out);
+}
+
+/* ---------- Badges ---------- */
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px 8px 10px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--card);
+  font-size: var(--t-micro);
+  font-weight: 800;
+  color: var(--text-faint);
+}
+.badge--on {
+  border-color: var(--yellow-edge);
+  background: var(--yellow-wash);
+  color: var(--text);
+}
+.badge__dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--border);
+  flex: none;
+}
+.badge--on .badge__dot {
+  background: var(--yellow);
+  box-shadow: 0 0 9px var(--yellow);
+}
+
+/* ---------- Discord panel ---------- */
+
+.chat {
+  display: flex;
+  gap: 11px;
+  padding: 11px 0;
+}
+.chat + .chat {
+  border-top: 1px solid var(--border-soft);
+}
+.chat__av {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  flex: none;
+  display: grid;
+  place-items: center;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 0.9rem;
+  color: #fff;
+}
+.chat__name {
+  font-weight: 800;
+  font-size: var(--t-small);
+}
+.chat__role {
+  font-family: var(--font-code);
+  font-size: 0.5625rem;
+  font-weight: 700;
+  letter-spacing: var(--track-label);
+  padding: 2px 6px;
+  border-radius: 4px;
+  margin-inline-start: 7px;
+  vertical-align: 1px;
+}
+.chat__msg {
+  font-size: var(--t-small);
+  color: var(--text-dim);
+  margin-top: 2px;
+}
+
+.channel {
+  display: flex;
+  align-items: baseline;
+  gap: 9px;
+  padding: 9px 0;
+  font-size: var(--t-small);
+}
+.channel + .channel {
+  border-top: 1px solid var(--border-soft);
+}
+.channel__name {
+  font-family: var(--font-code);
+  font-weight: 700;
+  color: var(--text);
+  flex: none;
+}
+.channel__desc {
+  color: var(--text-dim);
+}
+
+/* ---------- Score table (honest about being empty) ---------- */
+
+/* The high-score table. Four metrics, each a lit readout, with a leader
+   rule running out to it the way a cabinet's score board does. */
+.score {
+  display: grid;
+  gap: var(--s2) var(--s2);
+}
+.score__row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: var(--s2);
+  align-items: center;
+}
+.score__name {
+  font-family: var(--font-code);
+  font-size: var(--t-micro);
+  font-weight: 700;
+  letter-spacing: var(--track-label);
+  color: var(--text-dim);
+  position: relative;
+  overflow: hidden;
+  white-space: nowrap;
+}
+/* the dotted leader, drawn rather than typed */
+.score__name::after {
+  content: '';
+  position: absolute;
+  bottom: 0.38em;
+  margin-inline-start: 10px;
+  width: 100%;
+  border-bottom: 2px dotted var(--border);
+}
+.score__empty {
+  margin-top: var(--s1);
+  padding: 14px 16px;
+  border-radius: var(--r-sm);
+  border: 1px dashed var(--yellow-edge);
+  background: var(--yellow-wash);
+  text-align: center;
+  font-family: var(--font-code);
+  font-size: var(--t-micro);
+  font-weight: 700;
+  letter-spacing: var(--track-label);
+  color: var(--text);
+}
+
+/* ---------- Challenge box (yellow outline, per the brief) ---------- */
+
+.challenge {
+  border: 2px solid var(--yellow-edge);
+  border-radius: var(--r-card);
+  background: var(--yellow-wash);
+  padding: var(--s3);
+}
+
+/* ---------- Callouts ---------- */
+
+.note {
+  border: 1px solid var(--border);
+  border-radius: var(--r-card);
+  background: var(--card);
+  padding: var(--s2) var(--s3);
+}
+.note--warn {
+  border-color: var(--yellow-edge);
+  background: var(--yellow-wash);
+}
+.note--safe {
+  border-color: var(--mint-edge);
+  background: var(--mint-wash);
+}
+
+/* ---------- Scroll reveal: one authored moment per section ---------- */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity var(--d-reveal) var(--e-out), transform var(--d-reveal) var(--e-out);
+}
+.reveal.is-in {
+  opacity: 1;
+  transform: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ---------- Drifting background symbols ---------- */
+
+.drift {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+.drift span {
+  position: absolute;
+  font-family: var(--font-code);
+  font-weight: 700;
+  color: var(--purple);
+  opacity: 0.07;
+  animation: drift-float linear infinite;
+}
+@keyframes drift-float {
+  from {
+    transform: translateY(8vh) rotate(0deg);
+  }
+  to {
+    transform: translateY(-108vh) rotate(26deg);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .drift {
+    display: none;
+  }
+}

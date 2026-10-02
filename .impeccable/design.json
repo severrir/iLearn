@@ -1,0 +1,796 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-02T00:00:00Z",
+  "title": "Design System: iLearn",
+  "extensions": {
+    "colorMeta": {
+      "purple": {
+        "role": "primary",
+        "displayName": "Arcade Purple",
+        "canonical": "#7c5cff",
+        "note": "Pinned by the client brief. Borders, link underlines, drift symbols, default key cap. Not for solid fills under white text.",
+        "tonalRamp": [
+          "#140d33",
+          "#241a5c",
+          "#36278a",
+          "#4a36b8",
+          "#6248e0",
+          "#7c5cff",
+          "#a391ff",
+          "#d6cdff"
+        ]
+      },
+      "purple-fill": {
+        "role": "primary",
+        "displayName": "Fill Purple",
+        "canonical": "#6b4bf0",
+        "note": "Solid purple under white text. Exists because #7c5cff only reaches 4.35:1 with white.",
+        "tonalRamp": [
+          "#120c30",
+          "#1f1552",
+          "#2f1f7d",
+          "#4029a9",
+          "#5538d2",
+          "#6b4bf0",
+          "#9a84f7",
+          "#d2c7fd"
+        ]
+      },
+      "link": {
+        "role": "primary",
+        "displayName": "Link Purple",
+        "canonical": "#a08fff",
+        "note": "Inline links in prose; lighter than the accent so it reads as text on #0f1226. Falls back to purple-fill in light theme.",
+        "tonalRamp": [
+          "#17103a",
+          "#261a5e",
+          "#372785",
+          "#4c37ad",
+          "#6a52d4",
+          "#8b74ef",
+          "#a08fff",
+          "#ded6ff"
+        ]
+      },
+      "mint": {
+        "role": "secondary",
+        "displayName": "Free-Play Mint",
+        "canonical": "#2ef2b0",
+        "note": "Pinned. Fills, large numerals, icons, borders, glows, focus ring. 3:1 tier.",
+        "tonalRamp": [
+          "#03241a",
+          "#053d2c",
+          "#07583f",
+          "#0a7455",
+          "#14a978",
+          "#1fd196",
+          "#2ef2b0",
+          "#b7fde7"
+        ]
+      },
+      "mint-ink": {
+        "role": "secondary",
+        "displayName": "Mint Ink",
+        "canonical": "#2ef2b0",
+        "note": "Small text and solid buttons carrying white. Same as mint in dark theme; darkens to #08704f in light theme.",
+        "tonalRamp": [
+          "#021a13",
+          "#042d21",
+          "#06402f",
+          "#08704f",
+          "#0c9668",
+          "#12c186",
+          "#2ef2b0",
+          "#aefbe3"
+        ]
+      },
+      "yellow": {
+        "role": "secondary",
+        "displayName": "XP Yellow",
+        "canonical": "#ffd84d",
+        "note": "Pinned. Current position, progress, lit indicator, challenge outline, badge dots. 3:1 tier.",
+        "tonalRamp": [
+          "#2a2000",
+          "#453500",
+          "#614a00",
+          "#846500",
+          "#ad8500",
+          "#d8a700",
+          "#ffd84d",
+          "#fff0bd"
+        ]
+      },
+      "yellow-ink": {
+        "role": "secondary",
+        "displayName": "Yellow Ink",
+        "canonical": "#ffd84d",
+        "note": "Small text (schedule times, labels) and solid buttons. Darkens to #845d00 in light theme.",
+        "tonalRamp": [
+          "#1f1700",
+          "#352700",
+          "#4c3800",
+          "#664b00",
+          "#845d00",
+          "#b58200",
+          "#e6b400",
+          "#ffe999"
+        ]
+      },
+      "wine": {
+        "role": "tertiary",
+        "displayName": "Georgian Wine Red",
+        "canonical": "#b3202a",
+        "note": "Ground and border of the live/urgent state (.livebar sits on --wine-wash inside a --wine border). Identical in both themes. Never ordinary emphasis; the lit red is --live.",
+        "tonalRamp": [
+          "#210609",
+          "#3a0b11",
+          "#54101a",
+          "#731722",
+          "#941b25",
+          "#b3202a",
+          "#e04b55",
+          "#f8b8bc"
+        ]
+      },
+      "bg": {
+        "role": "neutral",
+        "displayName": "Cabinet Ground",
+        "canonical": "#0f1226",
+        "note": "Pinned page ground. Light counterpart #f5f6fd.",
+        "tonalRamp": [
+          "#05060f",
+          "#0a0c1b",
+          "#0f1226",
+          "#171b38",
+          "#272d5a",
+          "#3c4482",
+          "#7d87bd",
+          "#d9dcef"
+        ]
+      },
+      "card": {
+        "role": "neutral",
+        "displayName": "Card Navy",
+        "canonical": "#1a1e3a",
+        "note": "Pinned flat content surface. Light counterpart #ffffff.",
+        "tonalRamp": [
+          "#070814",
+          "#0e1022",
+          "#141732",
+          "#1a1e3a",
+          "#2a3160",
+          "#404a89",
+          "#8690c4",
+          "#dfe2f2"
+        ]
+      },
+      "panel": {
+        "role": "neutral",
+        "displayName": "Moulded Cabinet Body",
+        "canonical": "#161a33",
+        "note": "Always used as a gradient with panel-hi (#232849, top bevel) and panel-lo (#090b1a, bottom bevel in shadow).",
+        "tonalRamp": [
+          "#090b1a",
+          "#0f1225",
+          "#161a33",
+          "#232849",
+          "#333a68",
+          "#4b5490",
+          "#8f98c6",
+          "#e2e5f3"
+        ]
+      },
+      "border": {
+        "role": "neutral",
+        "displayName": "Part Seam",
+        "canonical": "#2a2f58",
+        "note": "1px seam between two parts. border-soft (#22274a) divides rows inside one list.",
+        "tonalRamp": [
+          "#0b0d1b",
+          "#13162c",
+          "#1d213f",
+          "#2a2f58",
+          "#3b4278",
+          "#565f9c",
+          "#9aa1ca",
+          "#e0e2f1"
+        ]
+      },
+      "text": {
+        "role": "neutral",
+        "displayName": "Screen White",
+        "canonical": "#f2f4ff",
+        "note": "Headings and strong text. Ramp down through text-dim (#a8afd6, prose) to text-faint (#8a92bd, mono labels).",
+        "tonalRamp": [
+          "#1a1e36",
+          "#2d3357",
+          "#454c6e",
+          "#5c6485",
+          "#8a92bd",
+          "#a8afd6",
+          "#d5d9ef",
+          "#f2f4ff"
+        ]
+      },
+      "screen": {
+        "role": "neutral",
+        "displayName": "Monitor Black",
+        "canonical": "#0a0d1e",
+        "note": "NEVER flips with the theme. The monitor surface for editor, sample, output, attract screen. Companions: screen-panel #121735, screen-border #2b3160, screen-text #f2f4ff, screen-dim #8d96c4, screen-gutter #6e76ad, screen-mint #2ef2b0, screen-yellow #ffd84d.",
+        "tonalRamp": [
+          "#05060f",
+          "#0a0d1e",
+          "#121735",
+          "#1c2350",
+          "#2b3160",
+          "#495291",
+          "#8d96c4",
+          "#eef0fa"
+        ]
+      },
+      "screen-well": {
+        "role": "neutral",
+        "displayName": "Monitor Well",
+        "canonical": "#06080f",
+        "note": "The recess behind a readout or a line-number gutter: one step darker than --screen. Part of the --screen-* set, so it never flips with the theme. Used by .led, .ed__gutter and .attract__out.",
+        "tonalRamp": [
+          "#06080f",
+          "#0a0d1e",
+          "#111634",
+          "#1a2050",
+          "#283070",
+          "#404a97",
+          "#8a93c2",
+          "#edeff9"
+        ]
+      },
+      "live": {
+        "role": "tertiary",
+        "displayName": "Lit Live Red",
+        "canonical": "#ff5a63",
+        "note": "The lamp-family red for anything actually on air: .led--wine and .livebar__dot with its glow. Deliberately not --wine (#b3202a), which is too dark to read as lit on a dark panel. Wine is the housing; --live is the bulb.",
+        "tonalRamp": [
+          "#2b0608",
+          "#480b10",
+          "#661219",
+          "#8b1b24",
+          "#b52a34",
+          "#dc3f4a",
+          "#ff5a63",
+          "#ffc6c9"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "hero": {
+        "displayName": "Hero",
+        "purpose": "The home headline only. 32px phone to 56px desktop."
+      },
+      "h1": {
+        "displayName": "Page Title",
+        "purpose": "Page titles in .phead."
+      },
+      "h2": {
+        "displayName": "Section Heading",
+        "purpose": "Section headings inside .sechead."
+      },
+      "h3": {
+        "displayName": "Block Title",
+        "purpose": "Card, panel and lesson-header titles."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "All prose at 17px/1.5. Wrapped 68ch in .prose, 62ch in .lede."
+      },
+      "body-lg": {
+        "displayName": "Lede",
+        "purpose": "Hero sub and page intro paragraphs."
+      },
+      "small": {
+        "displayName": "Small",
+        "purpose": "Card blurbs, nav links, list rows, FAQ text."
+      },
+      "label": {
+        "displayName": "Silkscreen Label",
+        "purpose": "Every machine label: .silk, .plate, .spec, .badge, footer column heads. Mono 700, tracked."
+      },
+      "code": {
+        "displayName": "Code",
+        "purpose": "Editor, samples, output, LED readouts. 15px/1.65, ligatures off, tab-size 4."
+      },
+      "display-georgian": {
+        "displayName": "Georgian Display",
+        "purpose": "Baloo 2 has no Georgian coverage; :lang(ka) h1-h3 swap to Noto Serif Georgian 700 at line-height 1.22 and letter-spacing 0."
+      },
+      "label-14": {
+        "displayName": "Shown Code",
+        "purpose": "Hardware ramp, 14px. Code shown rather than typed: .attract__code, .attract__out, .out__err. One step under the live editor."
+      },
+      "label-12": {
+        "displayName": "Struck Numeral",
+        "purpose": "Hardware ramp, 12px. Numerals struck beside a row: .rules li::before, .schedule time."
+      },
+      "label-11": {
+        "displayName": "Silkscreen Small",
+        "purpose": "Hardware ramp, 11px, tracked 0.06-0.13em. The busiest label size: .lamp, .screen__bar, .spec, .lhead__badge, .timeline time, .score__name, the track-card progress label and the impact stat labels."
+      },
+      "label-10": {
+        "displayName": "Part Caption",
+        "purpose": "Hardware ramp, 10px, tracked 0.04-0.1em. Captions under a part: .key__sub, .step__n, .levelrow__label, .countdown__label, and the /about swatch and pose captions."
+      },
+      "label-9": {
+        "displayName": "Role Pill",
+        "purpose": "Hardware ramp, 9px, tracked 0.09em. The smallest part in the world: .chat__role. Nothing smaller ships and nothing essential is said at this size alone."
+      },
+      "led": {
+        "displayName": "LED Numeral",
+        "purpose": "Fluid large readout on .led--lg, clamp(1.4rem, 1rem + 1.8vw, 2.1rem), tabular mono with a 9px glow."
+      },
+      "step-key": {
+        "displayName": "Step Cap Numeral",
+        "purpose": "clamp(0.7rem, 0.5rem + 0.9vw, 1rem) on .step__key so eight caps shrink instead of wrapping."
+      },
+      "key-glyph": {
+        "displayName": "Key Glyph",
+        "purpose": "The track's stamped mono mark on .key__glyph, 1.45rem, echoed at 1.05rem on .trackcard__cap."
+      },
+      "key-label": {
+        "displayName": "Key Label",
+        "purpose": "The display-face track name on .key, 1rem/800."
+      },
+      "brand": {
+        "displayName": "Wordmark",
+        "purpose": ".marquee__brand at 1.3rem, dropping to 1.1rem at <=680px; its text hides at <=430px."
+      },
+      "avatar": {
+        "displayName": "Avatar Initial",
+        "purpose": "The display-face initial inside .chat__av, 0.9rem."
+      }
+    },
+    "shadows": [
+      {
+        "name": "sh-1",
+        "value": "0 2px 6px rgba(4, 6, 18, 0.5)",
+        "purpose": "Resting cards. Light theme: 0 2px 6px rgba(26,30,54,.1)."
+      },
+      {
+        "name": "sh-2",
+        "value": "0 6px 18px rgba(4, 6, 18, 0.55)",
+        "purpose": "Marquee and panels."
+      },
+      {
+        "name": "sh-3",
+        "value": "0 14px 38px rgba(4, 6, 18, 0.6)",
+        "purpose": "The bezel and the open mobile menu."
+      },
+      {
+        "name": "sh-lift",
+        "value": "0 10px 26px rgba(4, 6, 18, 0.55), 0 0 0 1px var(--purple-edge)",
+        "purpose": "Hover on any clickable card; adds the purple edge ring."
+      },
+      {
+        "name": "key-bevel",
+        "value": "0 5px 0 var(--key-shade), 0 9px 16px rgba(4, 6, 18, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.5)",
+        "purpose": "The side wall of a moulded key cap. Hover grows to 7px; :active collapses to 1px with translateY(4px)."
+      },
+      {
+        "name": "button-bevel",
+        "value": "0 4px 0 color-mix(in srgb, var(--purple-fill) 55%, #000), 0 8px 18px rgba(4, 6, 18, 0.45)",
+        "purpose": "Pill button bevel; :active drops to 1px."
+      },
+      {
+        "name": "recess-screen",
+        "value": "inset 0 3px 22px rgba(0, 0, 0, 0.85)",
+        "purpose": "Screens, editor and attract surfaces read as sunk behind glass."
+      },
+      {
+        "name": "recess-plate",
+        "value": "inset 0 2px 5px rgba(0, 0, 0, 0.45), 0 1px 0 var(--panel-hi)",
+        "purpose": "The silkscreen plate struck into the cabinet body, with a lip of light beneath it."
+      },
+      {
+        "name": "recess-led",
+        "value": "inset 0 2px 9px rgba(0, 0, 0, 0.9)",
+        "purpose": "The --screen-well LED recess behind every number."
+      },
+      {
+        "name": "lit-glow",
+        "value": "0 0 12px var(--mint-edge)",
+        "purpose": "Only on parts that are actually powered: lamp bulb, done/current level cap, XP fill, live dot. LED digits use text-shadow: 0 0 9px currentColor."
+      },
+      {
+        "name": "shadow-alphas",
+        "value": "rgba(0,0,0,.3) cap seat | .45-.5 struck plate and XP track | .75 editor recess | .85 screen recess | .9 LED well | rgba(255,255,255,.05-.5) bevel highlight",
+        "purpose": "The bare black and white alphas inside box-shadow and inset declarations in cabinet.css, editor.css and pages.css are depth and sheen, not palette entries, and are intentionally theme-independent: a hole is dark and a moulding edge catches white light in either theme. Reuse one of these depths; never add a new accent rgba() here."
+      }
+    ],
+    "motion": [
+      {
+        "name": "e-out",
+        "value": "cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "Exponential ease-out for reveals, card lifts and cap state changes."
+      },
+      {
+        "name": "e-press",
+        "value": "cubic-bezier(0.3, 0, 0.2, 1)",
+        "purpose": "Presses, hovers and tints."
+      },
+      {
+        "name": "d-press",
+        "value": "0.15s",
+        "purpose": "Button and key press, nav tint, control hover."
+      },
+      {
+        "name": "d-lift",
+        "value": "0.2s",
+        "purpose": "Card lift 6px, level cap state change, FAQ chevron."
+      },
+      {
+        "name": "d-reveal",
+        "value": "0.5s",
+        "purpose": "The one authored moment per section: .reveal fades up 24px once on first scroll-in."
+      },
+      {
+        "name": "d-type",
+        "value": "1.5s",
+        "purpose": "Attract-screen typewriter and the impact counters."
+      },
+      {
+        "name": "xp-reveal",
+        "value": "clip-path 0.7s var(--e-out)",
+        "purpose": "Progress fills are revealed by clip-path on a full-width gradient, never by animating width."
+      },
+      {
+        "name": "lamp-pulse",
+        "value": "2.6s ease-in-out infinite",
+        "purpose": "The FREE PLAY bulb and the mascot's antenna. The live dot runs the same keyframes at 1.3s."
+      },
+      {
+        "name": "bit-blink",
+        "value": "4s infinite",
+        "purpose": "Mascot eyes blink every 4s; the right eye lags 0.08s."
+      },
+      {
+        "name": "reduced-motion",
+        "value": "animation-duration: 0.001ms; transition-duration: 0.001ms",
+        "purpose": "prefers-reduced-motion flattens all motion, hides .drift and the attract caret, stops mascot animation, and makes confetti() and the pop return early."
+      },
+      {
+        "name": "confetti",
+        "value": "1s burst, 90 pieces",
+        "purpose": "Fires only on a passed challenge, in the six key-cap colours read from TRACKS[].color in src/lib/fx.js, so recolouring a track recolours the celebration. Returns early under prefers-reduced-motion."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "key-2col",
+        "value": "440px"
+      },
+      {
+        "name": "step-labels-off",
+        "value": "620px"
+      },
+      {
+        "name": "marquee-tools-collapse",
+        "value": "680px"
+      },
+      {
+        "name": "three-up-stack",
+        "value": "760px"
+      },
+      {
+        "name": "twocol-stack",
+        "value": "800px"
+      },
+      {
+        "name": "key-3col / codebox-stack",
+        "value": "860px"
+      },
+      {
+        "name": "community-stack",
+        "value": "880px"
+      },
+      {
+        "name": "hero-stack",
+        "value": "900px"
+      },
+      {
+        "name": "nav-burger",
+        "value": "960px"
+      },
+      {
+        "name": "lesson-stack",
+        "value": "980px"
+      },
+      {
+        "name": "container-max",
+        "value": "1100px"
+      }
+    ],
+    "radiusLadder": [
+      {
+        "name": "bezel",
+        "value": "26px",
+        "purpose": "The frame that holds everything inside it (.bezel)."
+      },
+      {
+        "name": "r-card",
+        "value": "20px",
+        "purpose": "Cards, panels, notes, challenge box, FAQ rows."
+      },
+      {
+        "name": "screen",
+        "value": "16px",
+        "purpose": "The large screens: .screen, .attract."
+      },
+      {
+        "name": "r-key",
+        "value": "14px",
+        "purpose": "Moulded key caps, the track-card cap, and the screen-surfaced boxes .ed, .sample, .out."
+      },
+      {
+        "name": "icon-tile",
+        "value": "13px",
+        "purpose": "The Read/Try/Ask icon tile (.step3__icon)."
+      },
+      {
+        "name": "step",
+        "value": "12px",
+        "purpose": "The step hit-area and the mini-runner disclosure (.step, .mini)."
+      },
+      {
+        "name": "r-sm",
+        "value": "10px",
+        "purpose": "Small controls, plates, callout rows, inline chips."
+      },
+      {
+        "name": "cap",
+        "value": "9px",
+        "purpose": "The level-row cap (.step__key)."
+      },
+      {
+        "name": "well",
+        "value": "8px",
+        "purpose": "The LED well (.led)."
+      },
+      {
+        "name": "inlay",
+        "value": "6px",
+        "purpose": "Inline code (.ic) and plate internals."
+      },
+      {
+        "name": "hairline",
+        "value": "4px",
+        "purpose": "The focus-ring corner in base.css, the role pill, the Impact track dots."
+      },
+      {
+        "name": "indicator",
+        "value": "2px",
+        "purpose": "The lit indicator bar under the current step."
+      },
+      {
+        "name": "pill",
+        "value": "999px",
+        "purpose": "Buttons, lamps, badges, roles, the XP track."
+      },
+      {
+        "name": "circle",
+        "value": "50%",
+        "purpose": "Dots, bulbs, avatars."
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "The main action pill: 56px tall, display face, on a 4px bevel that compresses when pressed.",
+      "html": "<button class=\"ds-btn ds-btn--primary\">Start Lesson 1</button>",
+      "css": ".ds-btn { display: inline-flex; align-items: center; justify-content: center; gap: 9px; min-height: 56px; padding: 0 26px; border: 2px solid transparent; border-radius: 999px; font-family: 'Baloo 2', system-ui, sans-serif; font-weight: 800; font-size: 1.0625rem; cursor: pointer; white-space: nowrap; transition: transform .15s cubic-bezier(.3,0,.2,1), box-shadow .15s cubic-bezier(.3,0,.2,1); } .ds-btn--primary { background: var(--purple-fill, #6b4bf0); color: #fff; box-shadow: 0 4px 0 color-mix(in srgb, var(--purple-fill, #6b4bf0) 55%, #000), 0 8px 18px rgba(4,6,18,.45); } .ds-btn--primary:hover { transform: scale(1.05); box-shadow: 0 4px 0 color-mix(in srgb, var(--purple-fill, #6b4bf0) 55%, #000), 0 10px 26px rgba(124,92,255,.4); } .ds-btn--primary:active { transform: scale(.98); box-shadow: 0 1px 0 color-mix(in srgb, var(--purple-fill, #6b4bf0) 55%, #000), 0 2px 7px rgba(4,6,18,.45); } .ds-btn:focus-visible { outline: 3px solid var(--mint, #2ef2b0); outline-offset: 3px; }"
+    },
+    {
+      "name": "Ghost Button",
+      "kind": "button",
+      "refersTo": "button-ghost",
+      "description": "Secondary action: an outline pill that fills with the text colour and inverts its label on hover.",
+      "html": "<button class=\"ds-btn ds-btn--ghost\">See all tracks</button>",
+      "css": ".ds-btn--ghost { display: inline-flex; align-items: center; justify-content: center; min-height: 56px; padding: 0 26px; border: 2px solid var(--border, #2a2f58); border-radius: 999px; background: transparent; color: var(--text, #f2f4ff); font-family: 'Baloo 2', system-ui, sans-serif; font-weight: 800; font-size: 1.0625rem; cursor: pointer; transition: transform .15s cubic-bezier(.3,0,.2,1), background .15s cubic-bezier(.3,0,.2,1), color .15s cubic-bezier(.3,0,.2,1); } .ds-btn--ghost:hover { transform: scale(1.05); background: var(--text, #f2f4ff); border-color: var(--text, #f2f4ff); color: var(--bg, #0f1226); } .ds-btn--ghost:active { transform: scale(.98); } .ds-btn--ghost:focus-visible { outline: 3px solid var(--mint, #2ef2b0); outline-offset: 3px; }"
+    },
+    {
+      "name": "Track Key Cap",
+      "kind": "custom",
+      "refersTo": "key",
+      "description": "The signature part: a moulded plastic cap in the track's colour that genuinely travels 4px down when pressed.",
+      "html": "<button class=\"ds-key\"><span class=\"ds-key__glyph\">py</span>Python<span class=\"ds-key__sub\">8 LEVELS</span></button>",
+      "css": ".ds-key { --key-cap: #2ef2b0; --key-shade: color-mix(in srgb, var(--key-cap) 55%, #000); position: relative; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; min-height: 112px; padding: 14px 8px; border: 0; border-radius: 14px; background: linear-gradient(180deg, color-mix(in srgb, var(--key-cap) 88%, #fff) 0%, var(--key-cap) 42%, color-mix(in srgb, var(--key-cap) 84%, #000) 100%); color: #05210f; font-family: 'Baloo 2', system-ui, sans-serif; font-weight: 800; font-size: 1rem; line-height: 1.1; text-align: center; cursor: pointer; box-shadow: 0 5px 0 var(--key-shade), 0 9px 16px rgba(4,6,18,.5), inset 0 1px 0 rgba(255,255,255,.5); transition: transform .15s cubic-bezier(.3,0,.2,1), box-shadow .15s cubic-bezier(.3,0,.2,1), filter .15s cubic-bezier(.3,0,.2,1); } .ds-key__glyph { font-family: 'JetBrains Mono', monospace; font-size: 1.45rem; font-weight: 700; letter-spacing: -.02em; opacity: .95; } .ds-key__sub { font-family: 'JetBrains Mono', monospace; font-size: .625rem; font-weight: 700; letter-spacing: .1em; opacity: .82; } .ds-key:hover { filter: brightness(1.08); transform: translateY(-2px); box-shadow: 0 7px 0 var(--key-shade), 0 13px 22px rgba(4,6,18,.55), inset 0 1px 0 rgba(255,255,255,.5); } .ds-key:active { transform: translateY(4px); box-shadow: 0 1px 0 var(--key-shade), 0 2px 5px rgba(4,6,18,.5), inset 0 1px 0 rgba(255,255,255,.35); } .ds-key:focus-visible { outline: 3px solid var(--mint, #2ef2b0); outline-offset: 3px; }"
+    },
+    {
+      "name": "Silkscreen Plate",
+      "kind": "custom",
+      "refersTo": "plate",
+      "description": "The promise, struck into the cabinet body rather than printed on top of it.",
+      "html": "<div class=\"ds-plate\"><strong>FREE PLAY</strong><span class=\"ds-plate__sep\">·</span>NO SIGN-UP<span class=\"ds-plate__sep\">·</span>NO ADS</div>",
+      "css": ".ds-plate { display: inline-flex; flex-wrap: wrap; align-items: center; gap: 10px; padding: 11px 18px; border-radius: 10px; background: linear-gradient(180deg, var(--panel-lo, #090b1a), var(--panel, #161a33)); border: 1px solid var(--border, #2a2f58); border-top-color: var(--panel-lo, #090b1a); box-shadow: inset 0 2px 5px rgba(0,0,0,.45), 0 1px 0 var(--panel-hi, #232849); font-family: 'JetBrains Mono', monospace; font-size: .8125rem; font-weight: 700; letter-spacing: .1em; color: var(--text-dim, #a8afd6); } .ds-plate strong { color: var(--mint-ink, #2ef2b0); font-weight: 700; } .ds-plate__sep { color: var(--link, #a08fff); opacity: .7; }"
+    },
+    {
+      "name": "LED Readout",
+      "kind": "custom",
+      "refersTo": "led",
+      "description": "Every number on the site. A --screen-well recess behind tabular mono digits with a glow. Stays dark in both themes; .ds-led--wine burns --live, not --wine.",
+      "html": "<span class=\"ds-led ds-led--lg\">0<span class=\"ds-led__unit\">XP</span></span>",
+      "css": ".ds-led { display: inline-flex; align-items: baseline; gap: 2px; padding: 7px 12px; border-radius: 8px; background: var(--screen-well, #06080f); border: 1px solid var(--screen-border, #2b3160); box-shadow: inset 0 2px 9px rgba(0,0,0,.9); font-family: 'JetBrains Mono', monospace; font-weight: 700; font-variant-numeric: tabular-nums; letter-spacing: .04em; color: var(--screen-mint, #2ef2b0); text-shadow: 0 0 9px currentColor; line-height: 1; } .ds-led--lg { font-size: clamp(1.4rem, 1rem + 1.8vw, 2.1rem); padding: 11px 15px; } .ds-led__unit { font-size: .5em; opacity: .65; letter-spacing: .1em; margin-inline-start: 2px; }"
+    },
+    {
+      "name": "Code Editor",
+      "kind": "input",
+      "refersTo": "editor",
+      "description": "A dark monitor in both themes: struck line-number gutter, mint caret, and white-space: pre with horizontal scroll so one logical line is always one row.",
+      "html": "<div class=\"ds-ed\"><div class=\"ds-ed__gutter\"><span>1</span><span>2</span></div><pre class=\"ds-ed__pre\"><span class=\"ds-tok-fn\">print</span>(<span class=\"ds-tok-str\">\"hello\"</span>)</pre></div>",
+      "css": ".ds-ed { position: relative; background: var(--screen, #0a0d1e); border: 1px solid var(--screen-border, #2b3160); border-radius: 14px; overflow: hidden; box-shadow: inset 0 3px 18px rgba(0,0,0,.75); min-height: 74px; } .ds-ed:focus-within { border-color: var(--screen-mint, #2ef2b0); box-shadow: inset 0 3px 18px rgba(0,0,0,.75), 0 0 0 3px rgba(46,242,176,.13); } .ds-ed__pre { margin: 0; padding: 16px 16px 16px 50px; font-family: 'JetBrains Mono', monospace; font-size: .9375rem; line-height: 1.65; tab-size: 4; white-space: pre; overflow-x: auto; color: var(--screen-text, #f2f4ff); } .ds-ed__gutter { position: absolute; top: 0; left: 0; width: 38px; height: 100%; padding: 16px 0; text-align: right; font-family: 'JetBrains Mono', monospace; font-size: .9375rem; line-height: 1.65; color: var(--screen-gutter, #6e76ad); background: var(--screen-well, #06080f); border-right: 1px solid var(--screen-border, #2b3160); user-select: none; } .ds-ed__gutter span { display: block; padding-right: 9px; } .ds-tok-fn { color: #7ad3ff; } .ds-tok-str { color: #2ef2b0; }"
+    },
+    {
+      "name": "Content Card",
+      "kind": "card",
+      "refersTo": "card",
+      "description": "Flat content surface, 20px radius, 1px seam; lifts 6px to a purple edge ring on hover when clickable.",
+      "html": "<a class=\"ds-card ds-card--hover\" href=\"#\"><h3 class=\"ds-card__title\">Python</h3><p class=\"ds-card__body\">The gentlest start.</p><div class=\"ds-spec\"><span>8 LEVELS</span><span>240 XP</span><span>10 MIN</span></div></a>",
+      "css": ".ds-card { display: block; background: var(--card, #1a1e3a); border: 1px solid var(--border, #2a2f58); border-radius: 20px; padding: 24px; color: var(--text, #f2f4ff); text-decoration: none; box-shadow: 0 2px 6px rgba(4,6,18,.5); transition: transform .2s cubic-bezier(.16,1,.3,1), box-shadow .2s cubic-bezier(.16,1,.3,1), border-color .2s cubic-bezier(.16,1,.3,1); } .ds-card--hover:hover { transform: translateY(-6px); box-shadow: 0 10px 26px rgba(4,6,18,.55), 0 0 0 1px rgba(124,92,255,.4); border-color: rgba(124,92,255,.4); } .ds-card__title { font-family: 'Baloo 2', system-ui, sans-serif; font-weight: 800; font-size: 1.375rem; line-height: 1.08; letter-spacing: -.015em; margin: 0 0 8px; } .ds-card__body { margin: 0 0 12px; color: var(--text-dim, #a8afd6); font-family: Nunito, system-ui, sans-serif; font-size: .9375rem; line-height: 1.5; } .ds-spec { display: flex; flex-wrap: wrap; gap: 10px; font-family: 'JetBrains Mono', monospace; font-size: .6875rem; font-weight: 700; letter-spacing: .08em; color: var(--text-faint, #8a92bd); font-variant-numeric: tabular-nums; } .ds-card--hover:focus-visible { outline: 3px solid var(--mint, #2ef2b0); outline-offset: 3px; }"
+    },
+    {
+      "name": "Marquee Navigation",
+      "kind": "nav",
+      "refersTo": "nav",
+      "description": "The sticky lit sign across the top: panel gradient, a purple-to-mint tube beneath it, and a FREE PLAY lamp.",
+      "html": "<header class=\"ds-marquee\"><div class=\"ds-marquee__in\"><a class=\"ds-marquee__brand\" href=\"#\">iLearn</a><ul class=\"ds-marquee__nav\"><li><a class=\"ds-marquee__link\" href=\"#\" aria-current=\"page\">Tracks</a></li><li><a class=\"ds-marquee__link\" href=\"#\">Community</a></li></ul><span class=\"ds-lamp\"><i class=\"ds-lamp__bulb\"></i>FREE PLAY</span></div></header>",
+      "css": ".ds-marquee { position: relative; background: linear-gradient(180deg, var(--panel-hi, #232849), var(--panel, #161a33)); border-bottom: 1px solid var(--border, #2a2f58); box-shadow: 0 6px 18px rgba(4,6,18,.55); } .ds-marquee::after { content: ''; position: absolute; inset-inline: 0; bottom: -1px; height: 2px; background: linear-gradient(90deg, transparent, #7c5cff, #2ef2b0, transparent); opacity: .75; } .ds-marquee__in { display: flex; align-items: center; gap: 16px; min-height: 64px; padding: 10px 16px; } .ds-marquee__brand { font-family: 'Baloo 2', system-ui, sans-serif; font-weight: 800; font-size: 1.3rem; letter-spacing: -.02em; color: var(--text, #f2f4ff); text-decoration: none; } .ds-marquee__nav { display: flex; align-items: center; gap: 2px; list-style: none; margin: 0 0 0 auto; padding: 0; } .ds-marquee__link { display: block; padding: 9px 13px; border-radius: 10px; color: var(--text-dim, #a8afd6); text-decoration: none; font-family: Nunito, system-ui, sans-serif; font-weight: 700; font-size: .9375rem; transition: color .15s cubic-bezier(.3,0,.2,1), background .15s cubic-bezier(.3,0,.2,1); } .ds-marquee__link:hover { color: var(--text, #f2f4ff); background: rgba(124,92,255,.14); } .ds-marquee__link[aria-current='page'] { color: var(--text, #f2f4ff); background: rgba(124,92,255,.14); box-shadow: inset 0 -2px 0 #7c5cff; } .ds-lamp { display: inline-flex; align-items: center; gap: 7px; padding: 5px 11px 5px 9px; border-radius: 999px; background: rgba(46,242,176,.13); border: 1px solid rgba(46,242,176,.38); font-family: 'JetBrains Mono', monospace; font-size: .6875rem; font-weight: 700; letter-spacing: .14em; color: var(--mint-ink, #2ef2b0); white-space: nowrap; } .ds-lamp__bulb { width: 7px; height: 7px; border-radius: 50%; background: currentColor; box-shadow: 0 0 7px currentColor; animation: ds-lamp-pulse 2.6s ease-in-out infinite; } @keyframes ds-lamp-pulse { 0%, 100% { opacity: 1; } 50% { opacity: .42; } }"
+    },
+    {
+      "name": "Level Row",
+      "kind": "custom",
+      "refersTo": "levelrow",
+      "description": "The 8-step path. Eight caps in one row at every width — it scales, never wraps — with a lit indicator under the current step.",
+      "html": "<div class=\"ds-levelrow\"><a class=\"ds-step ds-step--done\" href=\"#\"><span class=\"ds-step__key\">1</span><span class=\"ds-step__n\">DONE</span></a><a class=\"ds-step ds-step--now\" href=\"#\"><span class=\"ds-step__key\">2</span><span class=\"ds-step__n\">NOW</span></a><a class=\"ds-step\" href=\"#\"><span class=\"ds-step__key\">3</span><span class=\"ds-step__n\">LVL 3</span></a></div>",
+      "css": ".ds-levelrow { display: grid; grid-template-columns: repeat(8, 1fr); gap: clamp(4px, .8vw, 10px); align-items: stretch; } .ds-step { position: relative; display: flex; flex-direction: column; align-items: center; gap: 7px; padding: 10px 2px 12px; border-radius: 12px; text-decoration: none; cursor: pointer; transition: transform .15s cubic-bezier(.3,0,.2,1); } .ds-step:hover { transform: translateY(-3px); } .ds-step__key { width: 100%; aspect-ratio: 3 / 4; min-height: 34px; border-radius: 9px; background: linear-gradient(180deg, var(--panel-hi, #232849), var(--panel, #161a33)); border: 1px solid var(--border, #2a2f58); box-shadow: 0 3px 0 var(--panel-lo, #090b1a), inset 0 1px 0 rgba(255,255,255,.06); display: grid; place-items: center; font-family: 'JetBrains Mono', monospace; font-size: clamp(.7rem, .5rem + .9vw, 1rem); font-weight: 700; color: var(--text-faint, #8a92bd); transition: background .2s cubic-bezier(.16,1,.3,1), color .2s cubic-bezier(.16,1,.3,1); } .ds-step--done .ds-step__key { background: linear-gradient(180deg, color-mix(in srgb, var(--mint-ink, #2ef2b0) var(--cap-lift, 86%), #fff), var(--mint-ink, #2ef2b0)); color: #05210f; border-color: transparent; box-shadow: 0 3px 0 color-mix(in srgb, var(--mint-ink, #2ef2b0) 55%, #000), 0 0 16px rgba(46,242,176,.38); } .ds-step--now .ds-step__key { background: linear-gradient(180deg, color-mix(in srgb, var(--yellow-ink, #ffd84d) var(--cap-lift, 86%), #fff), var(--yellow-ink, #ffd84d)); color: #241a00; border-color: transparent; box-shadow: 0 3px 0 color-mix(in srgb, var(--yellow-ink, #ffd84d) 55%, #000), 0 0 20px rgba(255,216,77,.42); } .ds-step__n { font-family: 'JetBrains Mono', monospace; font-size: .625rem; font-weight: 700; letter-spacing: .08em; color: var(--text-faint, #8a92bd); } .ds-step--now .ds-step__n { color: var(--yellow-ink, #ffd84d); } .ds-step--done .ds-step__n { color: var(--mint-ink, #2ef2b0); } .ds-step--now::after { content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 60%; height: 3px; border-radius: 2px; background: #ffd84d; box-shadow: 0 0 10px #ffd84d; }"
+    },
+    {
+      "name": "XP Bar",
+      "kind": "custom",
+      "refersTo": "xp",
+      "description": "A recessed 12px pill track. The purple-to-mint fill is always full width and revealed with clip-path, never an animated width.",
+      "html": "<div class=\"ds-xp\"><div class=\"ds-xp__fill\" style=\"clip-path: inset(0 38% 0 0)\"></div></div>",
+      "css": ".ds-xp { height: 12px; border-radius: 999px; background: var(--panel-lo, #090b1a); border: 1px solid var(--border, #2a2f58); overflow: hidden; box-shadow: inset 0 1px 4px rgba(0,0,0,.5); } .ds-xp__fill { height: 100%; width: 100%; border-radius: 999px; background: linear-gradient(90deg, #7c5cff, #2ef2b0); box-shadow: 0 0 12px rgba(46,242,176,.38); transition: clip-path .7s cubic-bezier(.16,1,.3,1); }"
+    },
+    {
+      "name": "Badge",
+      "kind": "chip",
+      "refersTo": "badge",
+      "description": "Earned-state pill with a dot that lights yellow when on.",
+      "html": "<span class=\"ds-badge ds-badge--on\"><i class=\"ds-badge__dot\"></i>First Program</span>",
+      "css": ".ds-badge { display: inline-flex; align-items: center; gap: 8px; padding: 8px 14px 8px 10px; border-radius: 999px; border: 1px solid var(--border, #2a2f58); background: var(--card, #1a1e3a); font-family: Nunito, system-ui, sans-serif; font-size: .8125rem; font-weight: 800; color: var(--text-faint, #8a92bd); } .ds-badge__dot { width: 10px; height: 10px; border-radius: 50%; background: var(--border, #2a2f58); flex: none; } .ds-badge--on { border-color: rgba(255,216,77,.42); background: rgba(255,216,77,.13); color: var(--text, #f2f4ff); } .ds-badge--on .ds-badge__dot { background: #ffd84d; box-shadow: 0 0 9px #ffd84d; }"
+    },
+    {
+      "name": "Live Bar",
+      "kind": "custom",
+      "refersTo": "livebar",
+      "description": "The on-air state: a wine-red housing with a lit --live dot. The housing is --wine; only the bulb is --live.",
+      "html": "<div class=\"ds-livebar\"><i class=\"ds-livebar__dot\"></i>LIVE NOW — SESSION RUNNING</div>",
+      "css": ".ds-livebar { display: flex; align-items: center; gap: 10px; padding: 12px 16px; border-radius: 10px; background: var(--wine-wash, rgba(179,32,42,.16)); border: 1px solid var(--wine, #b3202a); color: var(--text, #f2f4ff); font-family: Nunito, system-ui, sans-serif; font-weight: 800; font-size: .9375rem; } .ds-livebar__dot { width: 9px; height: 9px; border-radius: 50%; background: var(--live, #ff5a63); box-shadow: 0 0 9px var(--live, #ff5a63); flex: none; animation: ds-lamp-pulse 1.3s ease-in-out infinite; } @keyframes ds-lamp-pulse { 0%, 100% { opacity: 1; } 50% { opacity: .42; } }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Free Play Cabinet",
+    "overview": "Every part on this site is a piece of arcade hardware. The header is a lit marquee sign, the promise line is a plate struck into the moulded cabinet body, the six track buttons are injection-moulded plastic key caps that genuinely travel down 4px when pressed, numbers are segmented LED readouts behind glass, and the code editor is a monitor sitting inside a dark bezel. Nothing is \"a card with an icon on it\" — ask what part of a machine it is first, then build that part.\n\nThe density is generous, not dense: one idea per block, big friendly shapes, 8px spacing steps, and one authored motion moment per section. The world is loud in colour and quiet in behaviour — things react when touched (press, lift, glow) but nothing moves on its own except the FREE PLAY lamp pulse, the mascot's blink, and the attract screen typing itself.\n\nTwo themes ship, dark by default (:root) and light on :root[data-theme='light']. Both themes carry the same parts; only the ground and the ink change. One surface deliberately does not change: the monitor.",
+    "keyCharacteristics": [
+      "Arcade hardware parts, never generic web widgets.",
+      "Pinned palette from the client brief; no new hues.",
+      "Chunky rounded display type (Baloo 2) against strict tracked mono labels (JetBrains Mono).",
+      "Every number is a lit readout, every label is silkscreened mono.",
+      "Two type ramps that never mix: prose at 15px and up, hardware mono labels at 14/12/11/10/9px.",
+      "A radius ladder from a 26px frame down to a 2px lit bar, picked by what the part physically is.",
+      "Phone-first: the 8-step level row scales and never wraps, code scrolls sideways instead of wrapping.",
+      "Dark-and-light, but the screen is always dark."
+    ],
+    "rules": [
+      {
+        "name": "The Two-Tier Ink Rule",
+        "body": "Mint and yellow each ship as a pair. --mint / --yellow are the pinned brief values and are for fills, large LED numerals, icons, borders and glows — anything judged at 3:1. --mint-ink / --yellow-ink are for small text (13px labels, the schedule times, checklist ticks) and for solid buttons carrying white. In dark theme the pair is identical; in light theme the ink versions darken (#08704f, #845d00) because #0f9f72 and #a67600 hold 3:1 on white but not 4.5:1. If you are typing label-sized text or a filled button, reach for the -ink token; if you are filling a shape or drawing a border, reach for the plain one.",
+        "section": "colors"
+      },
+      {
+        "name": "The Monitor Rule",
+        "body": "The screen tokens (--screen, --screen-panel, --screen-text, --screen-dim, --screen-border, --screen-mint, --screen-yellow, --screen-gutter, --screen-well) never flip with the theme. A monitor is a monitor; the code box, the sample block, the output pane, the attract screen and the LED readouts stay dark in light theme. --screen-well is the darkest member of the set, the recess behind a readout or gutter. This also means code contrast is identical whichever theme the learner picked. Using --text or --card inside a screen puts dark text on a dark surface — a real bug, not a style preference.",
+        "section": "colors"
+      },
+      {
+        "name": "The Washes-Not-Tints Rule",
+        "body": "Translucent accent surfaces come from the existing wash/edge tokens (--purple-wash + --purple-edge, and the mint, yellow and wine equivalents). Never hand-write a new rgba() of a brand colour.",
+        "section": "colors"
+      },
+      {
+        "name": "The Georgian Display Swap Rule",
+        "body": "Baloo 2 has no Georgian coverage. :lang(ka) on h1-h3 swaps the display face to Noto Serif Georgian at weight 700, line-height 1.22, letter-spacing 0 — the tighter Latin metrics clip Georgian ascenders. Body text under :lang(ka) uses Noto Sans Georgian, and :lang(ka) .btn drops to 16px in Noto Sans Georgian so labels still fit the pill. Any new display-sized text needs the matching :lang(ka) rule.",
+        "section": "typography"
+      },
+      {
+        "name": "The Silkscreen Label Rule",
+        "body": "Machine labels are always JetBrains Mono, weight 700, 13px or smaller, letter-spaced 0.06em-0.17em, in --text-faint on panel. This is the world's silkscreen; it is how a section head, a spec strip, a channel name and a footer column head all announce themselves. Never set a label in the display face, and never letter-space the display face to fake one.",
+        "section": "typography"
+      },
+      {
+        "name": "The Two-Ramp Rule",
+        "body": "There are two type ramps and they do not mix. The prose ramp (hero > h1 > h2 > h3 > 18 > 17 > 15px, Baloo 2 and Nunito) carries everything a learner reads as language. The hardware ramp (14 > 12 > 11 > 10 > 9px, JetBrains Mono 700, tracked) carries only machine labels and readouts: silkscreen labels, spec strips, LED digits, step numbers, status bars, role pills. Prose never drops below 15px, and a hardware label is never set in a prose face or size. When adding small text, decide which ramp it belongs to first — that decision also hands you its font, weight and tracking.",
+        "section": "typography"
+      },
+      {
+        "name": "The Tabular Numbers Rule",
+        "body": "Any number that can change or line up (.led, .spec, .score, the schedule times, the countdown) carries .tnum or font-variant-numeric: tabular-nums so digits do not jitter as they tick.",
+        "section": "typography"
+      },
+      {
+        "name": "The Clip-Not-Hidden Rule",
+        "body": "body uses overflow-x: clip, never overflow-x: hidden. hidden makes body a scroll container, which silently stops every position: sticky descendant from sticking — the marquee and the lesson header both die. clip contains overflow without creating a scroll container.",
+        "section": "layout"
+      },
+      {
+        "name": "The Never-Wraps Rule",
+        "body": "The 8-step level row is grid-template-columns: repeat(8, 1fr) at every width and scales down instead of wrapping; its caps use aspect-ratio: 3 / 4 and clamped type. Below 620px the step labels hide, but the eight caps stay in one row. Do not add a wrap breakpoint.",
+        "section": "layout"
+      },
+      {
+        "name": "The Offset-Plus-Blur Rule",
+        "body": "Every ambient shadow token carries both an offset and a blur. A hard zero-blur shadow is allowed only as the side wall of a part that compresses — key caps, pill buttons, step caps — and it must be paired with a blurred ambient shadow in the same declaration. A flat offset shadow on a card, panel or plate is not in this world.",
+        "section": "elevation"
+      },
+      {
+        "name": "The Lit-Means-On Rule",
+        "body": "A glow states that something is powered: free play, done, you-are-here, running. Never use a glow decoratively on a resting surface. The lit red is --live (#ff5a63), never --wine, which is the housing around it. Shadow and recess alphas are part of this depth vocabulary rather than the palette: reuse the existing depths (0.3 / 0.45-0.5 / 0.75 / 0.85 / 0.9 black, 0.05-0.5 white) instead of adding a new rgba().",
+        "section": "elevation"
+      },
+      {
+        "name": "The One Moment Per Section Rule",
+        "body": "A section gets exactly one authored moment: .reveal fades it up 24px once, the first time it scrolls in. Everything else in that section is a response to touch. Confetti fires only on a passed challenge.",
+        "section": "components"
+      },
+      {
+        "name": "The Reduced-Motion Rule",
+        "body": "Under prefers-reduced-motion: reduce, base.css flattens all animation and transition durations to 0.001ms, .reveal starts visible, .drift is display: none, the attract caret hides, the mascot animations are none, and fx.js returns early from confetti() and the pop. New motion must be reachable by one of those switches, and nothing may be the only way information is delivered.",
+        "section": "components"
+      },
+      {
+        "name": "The Smaller-Part-Smaller-Corner Rule",
+        "body": "Radius follows the size of the part, not taste: 26px a frame, 20px a card, 14px a key or screen, 10px a control, 9px a cap, 8px a well, 6px an inlay, 4px a hairline detail, 2px a lit bar. When adding something, take the rung of the part it physically resembles instead of inventing a value between rungs.",
+        "section": "shapes"
+      }
+    ],
+    "dos": [
+      "Do build new elements as cabinet parts: ask whether it is a lit sign, a moulded key, a struck plate, a recessed well or a screen, then reuse .panel / .key / .plate / .screen instead of inventing a container.",
+      "Do use --mint-ink / --yellow-ink for label-sized text and for solid buttons carrying white, and plain --mint / --yellow for fills, large LED numerals, icons, borders and glows.",
+      "Do keep every screen-like surface on the --screen-* tokens so it stays dark in light theme.",
+      "Do set every machine label in JetBrains Mono, 700, <=13px, letter-spaced — and add a :lang(ka) rule whenever you add display-sized type.",
+      "Do decide which ramp new text belongs to before sizing it: prose (>=15px, Baloo 2 / Nunito) or hardware (14/12/11/10/9px mono), then take the exact step.",
+      "Do take a radius off the ladder by what the part physically is — 26 frame, 20 card, 14 key/screen, 10 control, 9 cap, 8 well, 6 inlay, 4 hairline, 2 lit bar.",
+      "Do use --screen-well for the recess behind a readout or gutter, and --live (not --wine) for anything that is actually on air.",
+      "Do derive decorative colour sets from data that already exists (TRACKS[].color) rather than writing a second palette.",
+      "Do space with --s1--s5 and the .stack-* helpers, and keep content inside .wrap (1100px, 16px gutter).",
+      "Do reveal progress with clip-path on a full-width fill.",
+      "Do keep every number tabular (.tnum) and every count honestly zero.",
+      "Do draw new icons into src/components/Icon.jsx on its 24px grid at 1.75 stroke with round caps, filling only genuinely solid objects.",
+      "Do test both themes and a keyboard pass: the focus ring is a 3px --mint outline at 3px offset, and it must stay visible on every new control."
+    ],
+    "donts": [
+      "Don't introduce a colour that is not in tokens.css, or hand-write an rgba() of a brand colour instead of using a -wash / -edge token.",
+      "Don't put --purple (#7c5cff) behind white text — use --purple-fill for solid fills.",
+      "Don't use themed tokens (--text, --card, --mint) inside a screen, editor, LED or attract surface; that is how dark text lands on a dark monitor.",
+      "Don't change body to overflow-x: hidden; it breaks every sticky element on the site.",
+      "Don't make the editor wrap, or add a wrap breakpoint to the 8-step level row.",
+      "Don't animate width on a progress fill.",
+      "Don't turn Bit's four hardcoded swatches into tokens or theme them; the /about reference sheet names those exact hexes.",
+      "Don't invent a radius between rungs of the ladder, put a flat zero-blur shadow on a non-compressing surface, or glow something that is not powered on.",
+      "Don't set prose below 15px or a hardware label at a prose size, and don't let 9px or 10px text be the only place a piece of information appears.",
+      "Don't add a new rgba() depth to a shadow, and don't read the existing shadow alphas as palette colours — reuse the recess and bevel depths already named.",
+      "Don't add a second authored motion to a section, and don't ship motion that reduced-motion cannot switch off.",
+      "Don't letter-space Baloo 2 to fake a mono label, and don't set a heading in Nunito."
+    ]
+  }
+}

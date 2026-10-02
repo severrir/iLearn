@@ -1,0 +1,118 @@
+/* Bit — the code-bug. Mint shell, purple chest plate, yellow antenna.
+   Drawn for this project; not traced from anything. */
+
+.bit {
+  display: block;
+  overflow: visible;
+}
+
+.bit__shadow {
+  fill: rgba(4, 6, 18, 0.32);
+}
+:root[data-theme='light'] .bit__shadow {
+  fill: rgba(26, 30, 54, 0.14);
+}
+
+.bit__eye {
+  transform-origin: center;
+  transform-box: fill-box;
+  animation: bit-blink 4s infinite;
+}
+.bit__eye--right {
+  animation-delay: 0.08s;
+}
+@keyframes bit-blink {
+  0%,
+  92%,
+  100% {
+    transform: scaleY(1);
+  }
+  95% {
+    transform: scaleY(0.12);
+  }
+}
+
+.bit__antenna-bulb {
+  transform-origin: center;
+  transform-box: fill-box;
+  animation: bit-glow 2.6s ease-in-out infinite;
+}
+@keyframes bit-glow {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.55;
+  }
+}
+
+/* The waving arm. Idle it rests; on hover of the whole figure it waves. */
+.bit__arm-wave {
+  transform-origin: 88px 78px;
+  transform-box: view-box;
+  transition: transform 0.2s var(--e-out);
+}
+.bit--wave .bit__arm-wave,
+.bit:hover .bit__arm-wave,
+.bit--cheer .bit__arm-wave {
+  animation: bit-wave 0.9s ease-in-out infinite;
+}
+@keyframes bit-wave {
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(-26deg);
+  }
+}
+
+.bit--cheer .bit__arm-left {
+  transform: rotate(18deg);
+  transform-origin: 32px 78px;
+  transform-box: view-box;
+}
+
+/* Thinking: the body tilts and the antenna leans back */
+.bit--think .bit__body-group {
+  transform: rotate(-5deg);
+  transform-origin: 60px 80px;
+  transform-box: view-box;
+}
+
+.bit--pop {
+  animation: bit-pop 0.55s var(--e-out);
+}
+@keyframes bit-pop {
+  0% {
+    transform: translateY(0) scale(1);
+  }
+  35% {
+    transform: translateY(-14px) scale(1.06, 0.95);
+  }
+  70% {
+    transform: translateY(0) scale(0.96, 1.04);
+  }
+  100% {
+    transform: translateY(0) scale(1);
+  }
+}
+
+.bit-btn {
+  border: 0;
+  background: none;
+  padding: 0;
+  cursor: pointer;
+  line-height: 0;
+  border-radius: 50%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bit__eye,
+  .bit__antenna-bulb,
+  .bit__arm-wave,
+  .bit--pop {
+    animation: none !important;
+  }
+}

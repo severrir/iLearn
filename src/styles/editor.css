@@ -1,0 +1,243 @@
+/* The code box: a real editor on a dark screen, in both themes. */
+
+.codebox {
+  display: grid;
+  gap: var(--s2);
+}
+.codebox--split {
+  grid-template-columns: 1fr 1fr;
+  align-items: start;
+}
+@media (max-width: 860px) {
+  .codebox--split {
+    grid-template-columns: 1fr;
+  }
+}
+
+.codebox__head {
+  display: flex;
+  align-items: center;
+  gap: var(--s1);
+  flex-wrap: wrap;
+}
+.codebox__actions {
+  display: flex;
+  gap: var(--s1);
+  margin-inline-start: auto;
+}
+
+/* ---- Editor ---- */
+
+.ed {
+  position: relative;
+  background: var(--screen);
+  border: 1px solid var(--screen-border);
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: inset 0 3px 18px rgba(0, 0, 0, 0.75);
+}
+.ed:focus-within {
+  border-color: var(--screen-mint);
+  box-shadow: inset 0 3px 18px rgba(0, 0, 0, 0.75), 0 0 0 3px var(--mint-wash);
+}
+
+/* Code scrolls sideways rather than wrapping. Wrapping looked tidier but hid
+   the learner's own code at phone widths, and made every gutter number wrong
+   below the first wrapped line. One logical line is now always one row. */
+.ed__pre,
+.ed__ta {
+  margin: 0;
+  padding: 16px 16px 16px 50px;
+  font-family: var(--font-code);
+  font-size: var(--t-code);
+  line-height: 1.65;
+  tab-size: 4;
+  white-space: pre;
+  border: 0;
+  letter-spacing: 0;
+}
+
+.ed__pre {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  color: var(--screen-text);
+  overflow: hidden;
+}
+
+.ed__ta {
+  position: relative;
+  display: block;
+  width: 100%;
+  background: transparent;
+  color: transparent;
+  caret-color: var(--screen-mint);
+  resize: none;
+  outline: none;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: thin;
+}
+.ed__ta::selection {
+  background: rgba(124, 92, 255, 0.4);
+  color: transparent;
+}
+
+/* Line numbers, struck into the gutter */
+.ed__gutter {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 38px;
+  padding: 16px 0;
+  text-align: right;
+  font-family: var(--font-code);
+  font-size: var(--t-code);
+  line-height: 1.65;
+  color: var(--screen-gutter);
+  background: var(--screen-well);
+  border-right: 1px solid var(--screen-border);
+  user-select: none;
+  pointer-events: none;
+  height: 100%;
+}
+.ed__gutter span {
+  display: block;
+  padding-right: 9px;
+}
+
+.tok-key {
+  color: var(--c-key);
+}
+.tok-str {
+  color: var(--c-str);
+}
+.tok-num {
+  color: var(--c-num);
+}
+.tok-com {
+  color: var(--c-com);
+  font-style: italic;
+}
+.tok-fn {
+  color: var(--c-fn);
+}
+.tok-op {
+  color: var(--c-op);
+}
+.tok-txt {
+  color: var(--screen-text);
+}
+
+/* Read-only example block */
+.sample {
+  position: relative;
+  background: var(--screen);
+  border: 1px solid var(--screen-border);
+  border-radius: 14px;
+  overflow: hidden;
+}
+.sample pre {
+  margin: 0;
+  padding: 16px;
+  overflow-x: auto;
+  color: var(--screen-text);
+  line-height: 1.65;
+}
+.sample__copy {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+}
+
+/* ---- Output ---- */
+
+.out {
+  background: var(--screen);
+  border: 1px solid var(--screen-border);
+  border-radius: 14px;
+  overflow: hidden;
+  min-height: 132px;
+  display: flex;
+  flex-direction: column;
+}
+.out__body {
+  padding: 14px 16px;
+  font-family: var(--font-code);
+  font-size: var(--t-code);
+  line-height: 1.65;
+  color: var(--screen-text);
+  white-space: pre-wrap;
+  overflow-wrap: break-word;
+  flex: 1;
+  margin: 0;
+  max-height: 360px;
+  overflow: auto;
+}
+.out__idle {
+  color: var(--screen-dim);
+}
+.out__err {
+  color: var(--c-err);
+  border-top: 1px solid rgba(255, 138, 147, 0.28);
+  padding: 12px 16px;
+  margin: 0;
+  font-family: var(--font-code);
+  font-size: 0.875rem;
+  line-height: 1.55;
+  white-space: pre-wrap;
+  background: rgba(255, 138, 147, 0.07);
+}
+
+.out__preview {
+  width: 100%;
+  height: 340px;
+  border: 0;
+  background: #ffffff;
+  display: block;
+}
+
+/* The mini-runner disclosure for C and C# */
+.mini {
+  display: flex;
+  gap: 10px;
+  padding: 12px 14px;
+  border-radius: 12px;
+  background: var(--yellow-wash);
+  border: 1px solid var(--yellow-edge);
+  font-size: var(--t-micro);
+  line-height: 1.5;
+  color: var(--text-dim);
+}
+.mini b {
+  color: var(--text);
+}
+
+.loadbar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 16px;
+  color: var(--screen-dim);
+  font-family: var(--font-code);
+  font-size: var(--t-micro);
+}
+.loadbar__spin {
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  border: 2px solid var(--screen-border);
+  border-top-color: var(--screen-mint);
+  animation: spin 0.8s linear infinite;
+  flex: none;
+}
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .loadbar__spin {
+    animation-duration: 2s;
+  }
+}

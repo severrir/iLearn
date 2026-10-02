@@ -1,0 +1,193 @@
+/* ============================================================
+   iLearn design tokens — the Free Play Cabinet
+   Palette is pinned by the brief and is not open to drift.
+   ============================================================ */
+
+:root {
+  /* ---- Pinned palette: dark theme (default) ---- */
+  --bg: #0f1226;
+  --card: #1a1e3a;
+  --purple: #7c5cff;
+  --mint: #2ef2b0;
+  --yellow: #ffd84d;
+  --wine: #b3202a;
+  --text: #f2f4ff;
+
+  /* ---- Derived: cabinet hardware ---- */
+  --panel: #161a33; /* the moulded cabinet body */
+  --panel-hi: #232849; /* top bevel catching light */
+  --panel-lo: #090b1a; /* bottom bevel in shadow */
+  --border: #2a2f58;
+  --border-soft: #22274a;
+  --text-dim: #a8afd6;
+  --text-faint: #8a92bd;
+
+  /* Inline links need more lift than the accent gives on a dark ground. */
+  --link: #a08fff;
+
+  /* The accent as a SOLID FILL under white text. The pinned #7C5CFF only
+     reaches 4.35:1 with white, so fills use the brief's other purple. */
+  --purple-fill: #6b4bf0;
+
+  /* Mint and yellow at small-text weight. In dark they are the pinned values
+     already; the light theme darkens them (see below). */
+  --mint-ink: #2ef2b0;
+
+  /* How far a lit key cap lightens at its top. Dark caps carry dark ink, so
+     a strong lift helps; light-theme caps carry white ink, so it must stay
+     subtle or the digit loses contrast against the top of the dome. */
+  --cap-lift: 86%;
+  --yellow-ink: #ffd84d;
+
+  /* The screen stays dark in BOTH themes. A monitor is a monitor; this also
+     keeps code contrast identical whichever theme the learner picked.
+     These never flip with the theme, because the surface never does. */
+  --screen: #0a0d1e;
+  --screen-panel: #121735;
+  --screen-text: #f2f4ff;
+  --screen-dim: #8d96c4;
+  --screen-border: #2b3160;
+  --screen-mint: #2ef2b0;
+  --screen-yellow: #ffd84d;
+  --screen-gutter: #6e76ad;
+  /* The recessed wells behind a readout or a gutter: darker than the screen
+     itself, and like the rest of the --screen-* set they never theme. */
+  --screen-well: #06080f;
+  /* The live/recording red. It belongs to the lamp family, not the wine
+     accent, which is too dark to read as lit on a dark panel. */
+  --live: #ff5a63;
+
+  /* Accent-on-surface pairs, pre-checked for contrast */
+  --on-purple: #ffffff;
+  --on-mint: #05210f;
+  --on-yellow: #241a00;
+  --on-wine: #ffffff;
+
+  /* Translucent accent washes */
+  --purple-wash: rgba(124, 92, 255, 0.14);
+  --purple-edge: rgba(124, 92, 255, 0.4);
+  --mint-wash: rgba(46, 242, 176, 0.13);
+  --mint-edge: rgba(46, 242, 176, 0.38);
+  --yellow-wash: rgba(255, 216, 77, 0.13);
+  --yellow-edge: rgba(255, 216, 77, 0.42);
+  --wine-wash: rgba(179, 32, 42, 0.16);
+
+  /* ---- Code syntax, tuned on --screen ---- */
+  --c-key: #c3aeff;
+  --c-str: #2ef2b0;
+  --c-num: #ffd84d;
+  --c-com: #7b83b0;
+  --c-fn: #7ad3ff;
+  --c-op: #e4a7c4;
+  --c-err: #ff8a93;
+
+  /* ---- Type ---- */
+/* Every family carries a Georgian face in its own chain. Font fallback is
+   per-glyph, so Latin and digits stay in the intended face while Georgian
+   picks up Noto Sans Georgian instead of dropping to a system default —
+   which is what made mono labels render in Courier beside JetBrains Mono. */
+  --font-display: 'Baloo 2', 'Noto Sans Georgian', system-ui, sans-serif;
+  --font-body: 'Nunito', 'Noto Sans Georgian', system-ui, -apple-system, sans-serif;
+  --font-code: 'JetBrains Mono', 'Noto Sans Georgian', ui-monospace, Consolas, monospace;
+
+  /* Silkscreen label tracking. Mkhedruli has no capitals, so the wide
+     tracking that makes Latin read as stamped just makes Georgian look
+     pulled apart; `:lang(ka)` below tightens it. */
+  --track-label: 0.12em;
+
+  --t-hero: clamp(2rem, 1.1rem + 4.4vw, 3.5rem); /* 32px phone → 56px desktop */
+  --t-h1: clamp(1.75rem, 1.1rem + 3.2vw, 2.75rem);
+  --t-h2: clamp(1.4rem, 1.05rem + 1.7vw, 2rem);
+  --t-h3: clamp(1.15rem, 1rem + 0.7vw, 1.375rem);
+  --t-body: 1.0625rem; /* 17px */
+  --t-body-lg: 1.125rem; /* 18px */
+  --t-small: 0.9375rem;
+  --t-micro: 0.8125rem;
+  --t-code: 0.9375rem; /* 15px */
+
+  /* ---- Space: 8px steps, per the brief ---- */
+  --s1: 8px;
+  --s2: 16px;
+  --s3: 24px;
+  --s4: 48px;
+  --s5: 96px;
+  --gutter: 16px;
+  --maxw: 1100px;
+
+  /* ---- Shape ---- */
+  --r-card: 20px;
+  --r-btn: 999px;
+  --r-key: 14px;
+  --r-sm: 10px;
+  --btn-h: 56px;
+
+  /* ---- Depth: every shadow has offset AND blur ---- */
+  --sh-1: 0 2px 6px rgba(4, 6, 18, 0.5);
+  --sh-2: 0 6px 18px rgba(4, 6, 18, 0.55);
+  --sh-3: 0 14px 38px rgba(4, 6, 18, 0.6);
+  --sh-lift: 0 10px 26px rgba(4, 6, 18, 0.55), 0 0 0 1px var(--purple-edge);
+
+  /* ---- Motion: timings pinned by the brief ---- */
+  --e-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --e-press: cubic-bezier(0.3, 0, 0.2, 1);
+  --d-press: 0.15s;
+  --d-lift: 0.2s;
+  --d-reveal: 0.5s;
+  --d-type: 1.5s;
+
+  color-scheme: dark;
+}
+
+/* ============================================================
+   Light theme
+   Mint and yellow switch to their darker variants so text on
+   white still clears AA. This is the whole reason those two
+   values exist in the brief.
+   ============================================================ */
+
+:root[data-theme='light'] {
+  --bg: #f5f6fd;
+  --card: #ffffff;
+  --purple: #6b4bf0;
+  --mint: #0f9f72;
+  --yellow: #a67600;
+  --wine: #b3202a;
+  --text: #1a1e36;
+
+  --panel: #e9ebf7;
+  --panel-hi: #ffffff;
+  --panel-lo: #c6cae4;
+  --border: #d3d7ee;
+  --border-soft: #e2e5f4;
+  --text-dim: #454c6e;
+  --text-faint: #5c6485;
+
+  --link: #6b4bf0;
+  --purple-fill: #6b4bf0;
+
+  /* #0F9F72 and #A67600 hold 3:1, which is enough for the big LED numerals,
+     icons and borders they fill — but not for 13px label text or for a solid
+     button carrying white. Those use these darker inks instead. */
+  --mint-ink: #08704f;
+  --cap-lift: 96%;
+  --yellow-ink: #845d00;
+
+  --on-purple: #ffffff;
+  --on-mint: #ffffff;
+  --on-yellow: #ffffff;
+
+  --purple-wash: rgba(107, 75, 240, 0.09);
+  --purple-edge: rgba(107, 75, 240, 0.32);
+  --mint-wash: rgba(15, 159, 114, 0.1);
+  --mint-edge: rgba(15, 159, 114, 0.34);
+  --yellow-wash: rgba(166, 118, 0, 0.1);
+  --yellow-edge: rgba(166, 118, 0, 0.38);
+  --wine-wash: rgba(179, 32, 42, 0.09);
+
+  --sh-1: 0 2px 6px rgba(26, 30, 54, 0.1);
+  --sh-2: 0 6px 18px rgba(26, 30, 54, 0.12);
+  --sh-3: 0 14px 38px rgba(26, 30, 54, 0.15);
+  --sh-lift: 0 10px 26px rgba(26, 30, 54, 0.16), 0 0 0 1px var(--purple-edge);
+
+  color-scheme: light;
+}
